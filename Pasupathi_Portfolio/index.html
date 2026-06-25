@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasupathi — Senior Graphic Designer | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4F0;
+    --paper-2:#EFECE6;
+    --ink:#15130F;
+    --ink-soft:#56524A;
+    --line:#DCD7CC;
+    --gold:#A8854F;
+    --gold-soft:#C9A96E;
+    --plum:#42124C;
+    --plum-deep:#6E1E7E;
+    --rose:#C6184B;
+    --vermilion:#ED1C3C;
+    --blush:#FCEEF1;
+    --maxw:1280px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%;height:auto;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 48px;}
+  h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1);}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 48px;
+    background:rgba(246,244,240,0.0);
+    transition:background .4s ease, padding .4s ease, border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  nav.scrolled{background:rgba(246,244,240,0.92);backdrop-filter:blur(10px);padding:16px 48px;border-color:var(--line);}
+  .logo{font-family:'Fraunces',serif;font-weight:500;font-size:20px;letter-spacing:.02em;}
+  .logo span{color:var(--gold);}
+  .navlinks{display:flex;gap:34px;font-size:13px;letter-spacing:.03em;}
+  .navlinks a{position:relative;color:var(--ink-soft);transition:color .3s;}
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--gold);transition:width .3s;}
+  .navlinks a:hover::after{width:100%;}
+  .navtoggle{display:none;}
+
+  /* COVER */
+  .cover{
+    min-height:100vh;
+    display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+    padding-top:90px;
+  }
+  .cover .wrap{display:grid;grid-template-columns:1.4fr .9fr;gap:60px;align-items:center;}
+  .cover-index{font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-soft);letter-spacing:.2em;margin-bottom:28px;}
+  .cover h1{
+    font-size:clamp(56px,9vw,118px);
+    line-height:.96;
+    margin-bottom:18px;
+  }
+  .cover h1 em{font-style:italic;color:var(--gold);font-weight:400;}
+  .cover .role{
+    font-size:clamp(16px,2vw,22px);
+    color:var(--ink-soft);
+    margin-bottom:26px;
+    max-width:640px;
+  }
+  .cover .role strong{color:var(--ink);font-weight:500;}
+  .cover blockquote{
+    font-family:'Fraunces',serif;font-style:italic;
+    font-size:clamp(18px,2.1vw,24px);
+    color:var(--ink);
+    border-left:2px solid var(--gold);
+    padding-left:22px;
+    max-width:560px;
+  }
+  .cover-photo{
+    position:relative;
+    aspect-ratio:3/4;
+    overflow:hidden;
+    border-radius:2px;
+    filter:grayscale(.15);
+  }
+  .cover-photo img{width:100%;height:100%;object-fit:cover;}
+  .cover-photo::after{
+    content:'';position:absolute;inset:0;
+    border:1px solid var(--line);
+    pointer-events:none;
+  }
+  .scrolldown{
+    position:absolute;bottom:38px;left:48px;
+    display:flex;align-items:center;gap:12px;
+    font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;color:var(--ink-soft);
+  }
+  .scrolldown .line{width:1px;height:36px;background:var(--ink-soft);position:relative;overflow:hidden;}
+  .scrolldown .line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:scrolldrop 2.2s ease-in-out infinite;}
+  @keyframes scrolldrop{0%{top:-100%;}50%{top:0;}100%{top:100%;}}
+
+  /* SECTION generic */
+  section{padding:150px 0 0;position:relative;}
+  .section-head{
+    display:grid;grid-template-columns:1fr 1fr;gap:40px;
+    margin-bottom:70px;
+    align-items:end;
+  }
+  .section-head h2{font-size:clamp(36px,5vw,58px);line-height:1.02;}
+  .section-head .num{
+    font-family:'Space Mono',monospace;font-size:13px;color:var(--ink-soft);
+    margin-bottom:14px;display:block;
+  }
+  .section-sub{color:var(--ink-soft);font-size:16px;max-width:380px;}
+  hr.div{border:none;border-top:1px solid var(--line);margin:0;}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:80px;padding-bottom:140px;}
+  .about-photo{position:relative;}
+  .about-photo img{filter:grayscale(.2);}
+  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);margin-top:26px;border:1px solid var(--line);}
+  .stat{background:var(--paper);padding:24px 22px;}
+  .stat .n{font-family:'Fraunces',serif;font-size:30px;color:var(--ink);}
+  .stat .l{font-size:12px;color:var(--ink-soft);letter-spacing:.02em;margin-top:4px;}
+  .about-text p{font-size:17px;color:var(--ink-soft);margin-bottom:18px;max-width:620px;}
+  .about-text p strong{color:var(--ink);font-weight:500;}
+  .industries{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 36px;}
+  .industries span{
+    font-size:12px;letter-spacing:.04em;border:1px solid var(--line);padding:7px 14px;border-radius:30px;color:var(--ink-soft);
+  }
+  .skills-title{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:36px 0 18px;}
+  .skills-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--line);}
+  .skills-grid div{padding:14px 0;border-bottom:1px solid var(--line);font-size:14.5px;color:var(--ink);display:flex;align-items:center;gap:10px;}
+  .skills-grid div::before{content:'';width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0;}
+
+  /* BRANDING CASE STUDY */
+  .branding{background:var(--ink);color:var(--paper);padding-bottom:140px;}
+  .branding .eyebrow{color:var(--gold-soft);}
+  .branding .eyebrow::before{background:var(--gold-soft);}
+  .branding .section-sub{color:#C9C5BC;}
+  .branding hr.div{border-top:1px solid #2C2A24;}
+  .case-hero{margin-bottom:90px;}
+  .case-hero-img{width:100%;border:1px solid #2C2A24;}
+  .case-meta{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2C2A24;margin-top:0;border:1px solid #2C2A24;
+  }
+  .case-meta div{background:var(--ink);padding:22px 24px;}
+  .case-meta .l{font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px;}
+  .case-meta .v{font-size:14.5px;color:#EDEAE2;}
+
+  .case-block{display:grid;grid-template-columns:.55fr 1fr;gap:70px;margin-bottom:110px;align-items:start;}
+  .case-block.reverse{grid-template-columns:1fr .55fr;}
+  .case-block.reverse .case-text{order:2;}
+  .case-block.reverse .case-visual{order:1;}
+  .case-block .case-tag{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:16px;}
+  .case-block h3{font-size:30px;color:var(--paper);margin-bottom:16px;}
+  .case-block p{color:#C9C5BC;font-size:15.5px;margin-bottom:14px;max-width:480px;}
+  .case-visual img{border:1px solid #2C2A24;}
+
+  .palette-row{display:flex;gap:0;border:1px solid #2C2A24;overflow:hidden;}
+  .swatch{flex:1;padding:26px 18px;min-height:140px;display:flex;flex-direction:column;justify-content:flex-end;}
+  .swatch .name{font-size:12.5px;color:#fff;font-weight:500;}
+  .swatch .hex{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,.75);margin-top:3px;}
+  .swatch.dark .name,.swatch.dark .hex{color:#fff;}
+  .swatch.light .name{color:#3a2330;}
+  .swatch.light .hex{color:rgba(58,35,48,.7);}
+
+  .type-sample{border:1px solid #2C2A24;padding:40px 36px;}
+  .type-sample .display{font-family:'Fraunces',serif;font-style:italic;font-size:46px;color:var(--paper);line-height:1.1;}
+  .type-sample .body-sample{font-family:'Inter',sans-serif;font-size:14px;color:#C9C5BC;margin-top:18px;letter-spacing:.01em;}
+  .type-sample .label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft);margin-top:24px;}
+
+  .app-gallery{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-top:20px;}
+  .app-gallery img{border:1px solid #2C2A24;width:100%;height:340px;object-fit:cover;object-position:top;cursor:pointer;transition:opacity .3s;}
+  .app-gallery img:hover{opacity:.82;}
+
+  .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#2C2A24;border:1px solid #2C2A24;margin-top:10px;}
+  .values-grid div{background:var(--ink);padding:26px 22px;}
+  .values-grid .vn{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold-soft);margin-bottom:10px;}
+  .values-grid .vt{font-size:14.5px;color:#EDEAE2;}
+
+  /* WORK SECTIONS (light) */
+  .work-section{padding-bottom:140px;}
+  .caption{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-soft);margin-top:10px;}
+
+  .poster-row{display:flex;flex-wrap:nowrap;gap:18px;overflow-x:auto;padding-bottom:14px;scrollbar-width:thin;}
+  .poster-row img{height:430px;width:344px;flex:0 0 auto;object-fit:cover;cursor:pointer;border:1px solid var(--line);transition:transform .35s ease;}
+  .poster-row img:hover{transform:translateY(-6px);}
+  .poster-row.square img{height:300px;width:300px;}
+  .row-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:46px 0 16px;}
+
+  .banner-full{margin-bottom:46px;cursor:pointer;border:1px solid var(--line);overflow:hidden;}
+  .banner-full img{width:100%;object-fit:cover;transition:transform .6s ease;}
+  .banner-full:hover img{transform:scale(1.02);}
+
+  .flyer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .flyer-card{border:1px solid var(--line);overflow:hidden;cursor:pointer;background:#fff;}
+  .flyer-card img{width:100%;height:380px;object-fit:cover;transition:transform .4s ease;}
+  .flyer-card:hover img{transform:scale(1.04);}
+  .flyer-card.wide{grid-column:span 2;}
+  .flyer-card.wide img{height:380px;object-fit:contain;background:#EFECE6;}
+
+  .standee-row{display:flex;gap:26px;align-items:flex-end;overflow-x:auto;padding-bottom:10px;}
+  .standee-card{flex:0 0 auto;text-align:center;}
+  .standee-card img{height:520px;width:auto;border:1px solid var(--line);cursor:pointer;object-fit:cover;}
+
+  .mockup-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px;}
+  .mockup-grid .big{grid-row:span 2;}
+  .mockup-card{position:relative;overflow:hidden;border:1px solid var(--line);cursor:pointer;background:#EFECE6;}
+  .mockup-card img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .mockup-card:hover img{transform:scale(1.05);}
+  .mockup-card .tag{
+    position:absolute;bottom:14px;left:14px;background:rgba(21,19,15,.82);color:#fff;
+    font-family:'Space Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+    padding:7px 12px;
+  }
+
+  /* CONTACT */
+  .contact{background:var(--ink);color:var(--paper);padding:160px 0 70px;margin-top:140px;}
+  .contact .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;}
+  .contact h2{font-size:clamp(40px,6vw,72px);color:var(--paper);line-height:1.05;margin-bottom:26px;}
+  .contact .cta-line{color:#C9C5BC;font-size:17px;max-width:480px;margin-bottom:36px;}
+  .contact .badge{
+    display:inline-flex;align-items:center;gap:10px;border:1px solid #3a372f;padding:10px 18px;border-radius:30px;
+    font-size:13px;color:var(--gold-soft);margin-bottom:50px;
+  }
+  .contact .badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#4CAF6D;display:inline-block;}
+  .contact-list{display:flex;flex-direction:column;gap:0;border-top:1px solid #2C2A24;}
+  .contact-list a{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 0;border-bottom:1px solid #2C2A24;color:var(--paper);font-size:18px;transition:color .3s;
+  }
+  .contact-list a span.l{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--gold-soft);text-transform:uppercase;}
+  .contact-list a:hover{color:var(--gold-soft);}
+  footer{padding:36px 0;text-align:center;color:#7A766C;font-size:12px;letter-spacing:.05em;border-top:1px solid #2C2A24;}
+
+  /* LIGHTBOX */
+  .lightbox{position:fixed;inset:0;background:rgba(15,13,10,.94);z-index:999;display:none;align-items:center;justify-content:center;padding:40px;}
+  .lightbox.open{display:flex;}
+  .lightbox img{max-height:90vh;max-width:90vw;object-fit:contain;border:1px solid #3a372f;}
+  .lightbox .close{position:absolute;top:30px;right:42px;color:#fff;font-size:14px;font-family:'Space Mono',monospace;letter-spacing:.1em;cursor:pointer;}
+
+  @media (max-width:900px){
+    .wrap{padding:0 22px;}
+    nav{padding:18px 22px;}
+    .navlinks{display:none;}
+    .cover .wrap{grid-template-columns:1fr;gap:36px;}
+    .cover-photo{max-width:280px;}
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .section-head{grid-template-columns:1fr;}
+    .case-block,.case-block.reverse{grid-template-columns:1fr;gap:30px;}
+    .case-block.reverse .case-text,.case-block.reverse .case-visual{order:initial;}
+    .case-meta{grid-template-columns:1fr 1fr;}
+    .app-gallery{grid-template-columns:1fr 1fr;}
+    .values-grid{grid-template-columns:1fr 1fr;}
+    .flyer-grid{grid-template-columns:1fr 1fr;}
+    .flyer-card.wide{grid-column:span 2;}
+    .mockup-grid{grid-template-columns:1fr;}
+    .mockup-grid .big{grid-row:auto;}
+    .mockup-card,.mockup-card.big{height:280px;}
+    .contact .wrap{grid-template-columns:1fr;}
+    section{padding-top:100px;}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo">PASUPATHI<span>.</span></div>
+  <div class="navlinks">
+    <a href="#about">About</a>
+    <a href="#branding">Branding</a>
+    <a href="#campaigns">Campaigns</a>
+    <a href="#banners">Banners</a>
+    <a href="#flyers">Flyers</a>
+    <a href="#standees">Standees</a>
+    <a href="#applications">Applications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ============ 1. COVER ============ -->
+<header class="cover" id="cover">
+  <div class="wrap">
+    <div>
+      <div class="cover-index">PORTFOLIO &nbsp;/&nbsp; 2026 EDITION</div>
+      <h1>Pasu<wbr>pathi<br><em>Designs</em> Brands.</h1>
+      <p class="role">Senior Graphic Designer — specialized in <strong>Branding, Social Media Design, Print Design &amp; Advertising.</strong></p>
+      <blockquote>“Creating impactful visuals that combine strategy, aesthetics, and brand storytelling.”</blockquote>
+    </div>
+    <div class="cover-photo reveal">
+      <img src="images/profile.jpg" alt="Pasupathi — Senior Graphic Designer">
+    </div>
+  </div>
+  <div class="scrolldown"><div class="line"></div>SCROLL</div>
+</header>
+
+<!-- ============ 2. ABOUT ============ -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">01 — PROFILE</span>
+        <h2>About Me</h2>
+      </div>
+      <p class="section-sub">A designer who builds visual systems, not just standalone graphics — across branding, social, and print.</p>
+    </div>
+    <hr class="div">
+
+    <div class="about-grid" style="margin-top:70px;">
+      <div class="about-photo reveal">
+        <img src="images/profile.jpg" alt="Pasupathi portrait">
+        <div class="about-stats">
+          <div class="stat"><div class="n">3+</div><div class="l">Years of Experience</div></div>
+          <div class="stat"><div class="n">12+</div><div class="l">Amazon &amp; Brand Specialisms</div></div>
+          <div class="stat"><div class="n">5K+</div><div class="l">Visuals Designed</div></div>
+          <div class="stat"><div class="n">4</div><div class="l">Industries Served</div></div>
+        </div>
+      </div>
+
+      <div class="about-text reveal">
+        <p>I'm Pasupathi, a graphic designer with <strong>3+ years of experience</strong> building brand identities, social media creatives, print collateral, and marketing visuals for fast-moving, high-volume environments.</p>
+        <p>My work spans <strong>brand identity systems, social campaigns, posters, banners, flyers, standees, and packaging</strong> — translating business goals into visuals that look premium and convert.</p>
+        <p>Tools: <strong>Adobe Photoshop, Illustrator, and CorelDRAW</strong>, used daily to produce design at speed without compromising craft.</p>
+
+        <div class="skills-title">Industries</div>
+        <div class="industries">
+          <span>FMCG</span><span>Matrimony</span><span>Traditional Products</span><span>E-commerce</span>
+        </div>
+
+        <div class="skills-title">Core Skills</div>
+        <div class="skills-grid">
+          <div>Brand Identity Design</div>
+          <div>Social Media Design</div>
+          <div>Poster Design</div>
+          <div>Banner Design</div>
+          <div>Flyer Design</div>
+          <div>Standee Design</div>
+          <div>Print Design</div>
+          <div>Packaging Design</div>
+          <div>Ad Creatives</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. BRANDING CASE STUDY ============ -->
+<section class="branding" id="branding">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">02 — CASE STUDY</span>
+        <h2>Dream Alliance<br>Brand Identity</h2>
+      </div>
+      <p class="section-sub">A complete identity system for a matrimonial service — built at the intersection of tradition and modern matchmaking.</p>
+    </div>
+    <hr class="div">
+
+    <div class="case-hero reveal" style="margin-top:60px;">
+      <img class="case-hero-img" src="images/brandguide_p1.jpg" alt="Dream Alliance brand identity guide cover">
+      <div class="case-meta">
+        <div><div class="l">Client</div><div class="v">Dream Alliance Matrimonial Services</div></div>
+        <div><div class="l">Scope</div><div class="v">Identity, Type, Colour, Applications</div></div>
+        <div><div class="l">Industry</div><div class="v">Matrimony &amp; Matchmaking</div></div>
+        <div><div class="l">Deliverables</div><div class="v">Logo system, guide, print &amp; social kit</div></div>
+      </div>
+    </div>
+
+    <!-- Brand Overview -->
+    <div class="case-block reveal">
+      <div class="case-text">
+        <div class="case-tag">Brand Overview</div>
+        <h3>Warmth, trust, and a touch of celebration</h3>
+        <p>Dream Alliance needed an identity that felt trustworthy enough for a serious life decision, yet warm enough for a service rooted in celebration and tradition. The brief called for a mark and system that would work as comfortably on a wedding-style social post as it would on a business card.</p>
+        <p>Every decision in the system — colour, type, motif — was built outward from a single signature shape, so the identity could scale across digital and print without losing its character.</p>
+      </div>
+      <div class="case-visual"><img src="images/brandguide_p1.jpg" alt="Brand overview"></div>
+    </div>
+
+    <!-- Logo Construction -->
+    <div class="case-block reverse reveal">
+      <div class="case-text">
+        <div class="case-tag">Logo Construction &amp; Signature Motif</div>
+        <h3>Two petals, becoming one</h3>
+        <p>The wordmark is anchored by a petal mark built from two overlapping forms — a quiet metaphor for "two becoming one" that carries through the entire system as a recurring device: a section divider, a card accent, even a loading state.</p>
+        <p>This motif gives the brand a visual signature that's recognisable even when the wordmark isn't present — a deliberate construction choice rather than decoration.</p>
+      </div>
+      <div class="case-visual"><img src="images/brandguide_p4.jpg" alt="Signature motif construction"></div>
+    </div>
+
+    <!-- Color Palette -->
+    <div class="reveal" style="margin-bottom:110px;">
+      <div class="case-tag">Colour Palette</div>
+      <h3 style="margin-bottom:10px;">Drawn from the petal gradient</h3>
+      <p style="color:#C9C5BC;max-width:680px;margin-bottom:30px;">The palette is pulled directly from the logo mark's plum-to-rose gradient. Plum carries authority, rose and vermilion carry the energy of a wedding invitation, and blush grounds the system as a soft, neutral base.</p>
+      <div class="palette-row">
+        <div class="swatch dark" style="background:#42124C;"><div class="name">Plum</div><div class="hex">#42124C</div></div>
+        <div class="swatch dark" style="background:#6E1E7E;"><div class="name">Deep Plum</div><div class="hex">#6E1E7E</div></div>
+        <div class="swatch dark" style="background:#C6184B;"><div class="name">Rose</div><div class="hex">#C6184B</div></div>
+        <div class="swatch dark" style="background:#ED1C3C;"><div class="name">Vermilion</div><div class="hex">#ED1C3C</div></div>
+        <div class="swatch light" style="background:#FCEEF1;"><div class="name">Blush</div><div class="hex">#FCEEF1</div></div>
+      </div>
+    </div>
+
+    <!-- Typography -->
+    <div class="case-block reveal">
+      <div class="case-text">
+        <div class="case-tag">Typography System</div>
+        <h3>Invitation-card serif, modern sans body</h3>
+        <p>Playfair Display brings the high-contrast, invitation-card character already present in the wordmark, reserved for headlines and emotional moments.</p>
+        <p>Poppins keeps body copy approachable and modern — a rounded sans that softens the formality of the serif across posters, banners, and the website.</p>
+      </div>
+      <div class="case-visual">
+        <div class="type-sample">
+          <div class="display">Find Your<br>Perfect Match</div>
+          <div class="body-sample">Used for descriptions, captions, and UI text — Poppins keeps long-form copy easy to scan across every touchpoint.</div>
+          <div class="label">Display: Playfair Display &nbsp;/&nbsp; Body: Poppins</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand Values & Message -->
+    <div class="reveal" style="margin-bottom:110px;">
+      <div class="case-tag">Brand Values &amp; Message</div>
+      <h3 style="margin-bottom:24px;">What the identity needed to say</h3>
+      <div class="values-grid">
+        <div><div class="vn">01</div><div class="vt">Trust — a serious decision deserves a credible visual voice.</div></div>
+        <div><div class="vn">02</div><div class="vt">Warmth — every touchpoint should feel personal, not corporate.</div></div>
+        <div><div class="vn">03</div><div class="vt">Celebration — the energy of a wedding invitation, not a form.</div></div>
+        <div><div class="vn">04</div><div class="vt">Tradition meets modern — respectful of custom, built for today.</div></div>
+      </div>
+    </div>
+
+    <!-- Visual Identity System -->
+    <div class="case-block reverse reveal">
+      <div class="case-text">
+        <div class="case-tag">Visual Identity System</div>
+        <h3>One system, every format</h3>
+        <p>The palette, type scale, and petal motif were stress-tested across a business card, a social post template, and a letterhead — proving the system holds up far beyond the logo itself.</p>
+        <p>This is the layer that makes a brand feel designed rather than decorated: consistent margins, consistent colour logic, consistent voice.</p>
+      </div>
+      <div class="case-visual"><img src="images/brandguide_p5.jpg" alt="Visual identity system applications"></div>
+    </div>
+
+    <!-- Mockup Applications -->
+    <div class="reveal">
+      <div class="case-tag">Mockup Applications</div>
+      <h3 style="margin-bottom:24px;">From guide to real-world collateral</h3>
+      <div class="app-gallery">
+        <img src="images/brandguide_p6.jpg" alt="Social post template application" onclick="openLightbox('images/brandguide_p6.jpg')">
+        <img src="images/brandguide_p7.jpg" alt="Printables: flyer, standee, event banner" onclick="openLightbox('images/brandguide_p7.jpg')">
+        <img src="images/brandguide_p2.jpg" alt="Colour palette reference sheet" onclick="openLightbox('images/brandguide_p2.jpg')">
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 4. POSTER / CAMPAIGNS ============ -->
+<section class="work-section" id="campaigns">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">03 — SOCIAL</span>
+        <h2>Social Media<br>Campaigns</h2>
+      </div>
+      <p class="section-sub">Strategic visual communication designed for engagement and conversions.</p>
+    </div>
+    <hr class="div">
+
+    <div class="row-label reveal">4:5 Format — Feed &amp; Story Creatives</div>
+    <div class="poster-row reveal">
+      <img src="images/poster45_1.jpg" onclick="openLightbox('images/poster45_1.jpg')" alt="4:5 social poster 1">
+      <img src="images/poster45_2.jpg" onclick="openLightbox('images/poster45_2.jpg')" alt="4:5 social poster 2">
+      <img src="images/poster45_3.jpg" onclick="openLightbox('images/poster45_3.jpg')" alt="4:5 social poster 3">
+      <img src="images/poster45_4.jpg" onclick="openLightbox('images/poster45_4.jpg')" alt="4:5 social poster 4">
+      <img src="images/poster45_5.jpg" onclick="openLightbox('images/poster45_5.jpg')" alt="4:5 social poster 5">
+      <img src="images/poster45_6.jpg" onclick="openLightbox('images/poster45_6.jpg')" alt="4:5 social poster 6">
+      <img src="images/poster45_7.jpg" onclick="openLightbox('images/poster45_7.jpg')" alt="4:5 social poster 7">
+      <img src="images/poster45_8.jpg" onclick="openLightbox('images/poster45_8.jpg')" alt="4:5 social poster 8">
+      <img src="images/poster45_9.jpg" onclick="openLightbox('images/poster45_9.jpg')" alt="4:5 social poster 9">
+    </div>
+
+    <div class="row-label reveal">1:1 Format — Square Feed Creatives</div>
+    <div class="poster-row square reveal">
+      <img src="images/poster11_1.jpg" onclick="openLightbox('images/poster11_1.jpg')" alt="1:1 social poster 1">
+      <img src="images/poster11_2.jpg" onclick="openLightbox('images/poster11_2.jpg')" alt="1:1 social poster 2">
+      <img src="images/poster11_4.jpg" onclick="openLightbox('images/poster11_4.jpg')" alt="1:1 social poster 4">
+      <img src="images/poster11_5.jpg" onclick="openLightbox('images/poster11_5.jpg')" alt="1:1 social poster 5">
+      <img src="images/poster11_6.jpg" onclick="openLightbox('images/poster11_6.jpg')" alt="1:1 social poster 6">
+      <img src="images/poster11_7.jpg" onclick="openLightbox('images/poster11_7.jpg')" alt="1:1 social poster 7">
+      <img src="images/poster11_8.jpg" onclick="openLightbox('images/poster11_8.jpg')" alt="1:1 social poster 8">
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. BANNERS ============ -->
+<section class="work-section" id="banners">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">04 — ADVERTISING</span>
+        <h2>Advertising<br>Banners</h2>
+      </div>
+      <p class="section-sub">Wide-format creative built for digital storefronts and outdoor placements.</p>
+    </div>
+    <hr class="div">
+
+    <div style="margin-top:60px;">
+      <div class="banner-full reveal" onclick="openLightbox('images/banner1.jpg')"><img src="images/banner1.jpg" alt="Advertising banner 1"></div>
+      <div class="banner-full reveal" onclick="openLightbox('images/banner2.jpg')"><img src="images/banner2.jpg" alt="Advertising banner 2"></div>
+      <div class="banner-full reveal" onclick="openLightbox('images/banner3.jpg')"><img src="images/banner3.jpg" alt="Advertising banner 3"></div>
+      <div class="row-label reveal">Real-World Mockup</div>
+      <div class="banner-full reveal" onclick="openLightbox('images/banner1_mockup.jpg')"><img src="images/banner1_mockup.jpg" alt="Banner mockup presentation"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. FLYERS ============ -->
+<section class="work-section" id="flyers">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">05 — PRINT</span>
+        <h2>Flyer<br>Designs</h2>
+      </div>
+      <p class="section-sub">Print-ready layouts balancing hierarchy, offer clarity, and brand consistency.</p>
+    </div>
+    <hr class="div">
+
+    <div class="flyer-grid reveal" style="margin-top:60px;">
+      <div class="flyer-card" onclick="openLightbox('images/flyer1.jpg')"><img src="images/flyer1.jpg" alt="Flyer design 1"></div>
+      <div class="flyer-card" onclick="openLightbox('images/flyer2.jpg')"><img src="images/flyer2.jpg" alt="Flyer design 2"></div>
+      <div class="flyer-card" onclick="openLightbox('images/flyer3.jpg')"><img src="images/flyer3.jpg" alt="Flyer design 3"></div>
+      <div class="flyer-card" onclick="openLightbox('images/flyer4.jpg')"><img src="images/flyer4.jpg" alt="Flyer design 4"></div>
+      <div class="flyer-card wide" onclick="openLightbox('images/flyer1_mockup.jpg')"><img src="images/flyer1_mockup.jpg" alt="Flyer mockup presentation 1"></div>
+      <div class="flyer-card wide" onclick="openLightbox('images/flyer4_mockup.jpg')"><img src="images/flyer4_mockup.jpg" alt="Flyer mockup presentation 2"></div>
+      <div class="flyer-card" style="grid-column:span 4;" onclick="openLightbox('images/flyer5.jpg')"><img src="images/flyer5.jpg" alt="Flyer design 5" style="height:460px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. STANDEES ============ -->
+<section class="work-section" id="standees">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">06 — EVENT</span>
+        <h2>Standee &amp;<br>Event Branding</h2>
+      </div>
+      <p class="section-sub">Vertical formats built to anchor a brand's presence at physical touchpoints.</p>
+    </div>
+    <hr class="div">
+
+    <div class="standee-row reveal" style="margin-top:60px;">
+      <div class="standee-card"><img src="images/standee1.jpg" onclick="openLightbox('images/standee1.jpg')" alt="Standee design 1"></div>
+      <div class="standee-card"><img src="images/standee2.jpg" onclick="openLightbox('images/standee2.jpg')" alt="Standee design 2"></div>
+      <div class="standee-card"><img src="images/standee3.jpg" onclick="openLightbox('images/standee3.jpg')" alt="Standee design 3"></div>
+      <div class="standee-card"><img src="images/standee4.jpg" onclick="openLightbox('images/standee4.jpg')" alt="Standee design 4"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. MOCKUP SHOWCASE ============ -->
+<section class="work-section" id="applications">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="num">07 — IN CONTEXT</span>
+        <h2>Brand<br>Applications</h2>
+      </div>
+      <p class="section-sub">Designs placed in their real-world environment — posters, flyers, and branding in situ.</p>
+    </div>
+    <hr class="div">
+
+    <div class="mockup-grid reveal" style="margin-top:60px;">
+      <div class="mockup-card big" onclick="openLightbox('images/banner1_mockup.jpg')">
+        <img src="images/banner1_mockup.jpg" alt="Outdoor banner application">
+        <div class="tag">Outdoor Advertising</div>
+      </div>
+      <div class="mockup-card" onclick="openLightbox('images/flyer1_mockup.jpg')">
+        <img src="images/flyer1_mockup.jpg" alt="Flyer in-context application 1">
+        <div class="tag">Flyer Application</div>
+      </div>
+      <div class="mockup-card" onclick="openLightbox('images/flyer4_mockup.jpg')">
+        <img src="images/flyer4_mockup.jpg" alt="Flyer in-context application 2">
+        <div class="tag">Flyer Application</div>
+      </div>
+      <div class="mockup-card" onclick="openLightbox('images/brandguide_p7.jpg')">
+        <img src="images/brandguide_p7.jpg" alt="Printables brand application">
+        <div class="tag">Print Collateral</div>
+      </div>
+      <div class="mockup-card" onclick="openLightbox('images/brandguide_p6.jpg')">
+        <img src="images/brandguide_p6.jpg" alt="Social template brand application">
+        <div class="tag">Branding Application</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. CONTACT ============ -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <div class="badge">Available for Full-time, Remote &amp; Freelance Opportunities</div>
+      <h2>Let's build the<br>next brand.</h2>
+      <p class="cta-line">Open to Senior Graphic Designer roles and freelance briefs across branding, social, and print. Based in Trichy, Tamil Nadu — working with teams everywhere.</p>
+    </div>
+    <div class="contact-list">
+      <a href="mailto:pasupathikutty82@gmail.com"><span class="l">Email</span><span>pasupathikutty82@gmail.com</span></a>
+      <a href="https://wa.me/919790244563" target="_blank" id="phoneLink"><span class="l">WhatsApp</span><span>+91 97902 44563</span></a>
+      <a href="#cover"><span class="l">Back to top</span><span>↑</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Pasupathi — Senior Graphic Designer. All work shown is original design.</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <div class="close">CLOSE ✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  // nav scroll state
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', ()=>{
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // reveal on scroll
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // lightbox
+  function openLightbox(src){
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox(e){
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
